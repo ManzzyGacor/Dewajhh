@@ -679,4 +679,54 @@
             });
         });
 
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.profile, .description, .skills, .links');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animation
+        window.addEventListener('load', () => {
+            document.querySelector('.profile').style.opacity = '0';
+            document.querySelector('.description').style.opacity = '0';
+            document.querySelector('.description').style.transform = 'translateY(30px)';
+            document.querySelector('.skills').style.opacity = '0';
+            document.querySelector('.skills').style.transform = 'translateY(30px)';
+            document.querySelector('.links').style.opacity = '0';
+            
+            // Trigger animations after a short delay
+            setTimeout(() => {
+                animateOnScroll();
+            }, 100);
+        });
+
+        // Add scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Parallax effect for banner
+        window.addEventListener('scroll', () => {
+            const banner = document.querySelector('.banner');
+            const scrollPosition = window.scrollY;
+            
+            banner.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
         // Animation on scrol
